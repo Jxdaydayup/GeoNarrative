@@ -1,1 +1,4 @@
 # GeoNarrative
+## The Geography of Educational Equity in King County, Washington
+### Constructing and Interpreting an Opportunity Index
+This geo-narrative project utilizes open-source storytelling library and opportunity mapping to tell the geography of educational equity in King County, Washington by constructing and interpreting an opportunity index. It places the equity challenges facing marginalized communities in a geographical perspective and give insights into the range of meaningful choices available to an individual or a community. A series of maps can stimulate dialogue and consensus-building among stakeholders that can help inform the design of equity advocacy efforts, strategic planning, and program evaluation and design. 

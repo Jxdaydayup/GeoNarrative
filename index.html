@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="GeoNarrative Template" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GeoNarrative Template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css" />
+  <link rel="stylesheet" c href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+    <style>
+  .site-footer {
+    background-color: #26272b;
+    padding: 45px 0 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+
+  .site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+  }
+
+  .site-footer hr.small {
+    margin: 20px 0
+  }
+
+  .site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+  }
+
+  .site-footer a {
+    color: #ffffff;
+  }
+
+  .site-footer a:hover {
+    color: #3366cc;
+    text-decoration: none;
+  }
+
+  .footer-links {
+    padding-left: 0;
+    list-style: none
+  }
+
+  .footer-links li {
+    display: block
+  }
+
+  .footer-links a {
+    color: #ffffff
+  }
+
+  .footer-links a:active,
+  .footer-links a:focus,
+  .footer-links a:hover {
+    color: #3366cc;
+    text-decoration: none;
+  }
+
+  .footer-links.inline li {
+    display: inline-block
+  }
+
+  .site-footer .social-icons {
+    text-align: right
+  }
+
+  .site-footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 0;
+    border-radius: 100%;
+    background-color: #33353d
+  }
+
+  .copyright-text {
+    margin: 0
+  }
+
+  @media (max-width:991px) {
+    .site-footer [class^=col-] {
+      margin-bottom: 30px
+    }
+  }
+
+  @media (max-width:767px) {
+    .site-footer {
+      padding-bottom: 0
+    }
+
+    .site-footer .copyright-text,
+    .site-footer .social-icons {
+      text-align: center
+    }
+  }
+
+  .social-icons {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none
+  }
+
+  .social-icons li {
+    display: inline-block;
+    margin-bottom: 4px
+  }
+
+  .social-icons li.title {
+    margin-right: 15px;
+    text-transform: uppercase;
+    color: #96a2b2;
+    font-weight: 700;
+    font-size: 13px
+  }
+
+  .social-icons a {
+    background-color: #eceeef;
+    color: #818a91;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 44px;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    margin-right: 8px;
+    border-radius: 100%;
+    -webkit-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear
+  }
+
+  .social-icons a:active,
+  .social-icons a:focus,
+  .social-icons a:hover {
+    color: #fff;
+    background-color: #29aafe
+  }
+
+  .social-icons.size-sm a {
+    line-height: 34px;
+    height: 34px;
+    width: 34px;
+    font-size: 14px
+  }
+
+  .social-icons a.facebook:hover {
+    background-color: #3b5998
+  }
+
+  .social-icons a.twitter:hover {
+    background-color: #00aced
+  }
+
+  .social-icons a.linkedin:hover {
+    background-color: #007bb6
+  }
+
+  .social-icons a.dribbble:hover {
+    background-color: #ea4c89
+  }
+
+  @media (max-width:767px) {
+    .social-icons li.title {
+      display: block;
+      margin-right: 0;
+      font-weight: 600
+    }
+  }
+</style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/2.2.1/scrollama.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+</head>
+
+  <body>
+    <section id="cover">
+      <video class="fullscreen canvas-center" playsinline="" autoplay="" muted="" loop="">
+        <source src="assets/intro.mp4" type="video/mp4">
+      </video>
+    <div id="intro">
+       <h1>The Geography of Educational Equity in King County, Washington</h1>
+       <h5>Constructing and Interpreting an Opportunity Index</h5>
+       <p>Pioneered by the Kirwan Institute for the Study of Race and Ethnicity established at The Ohio State University, opportunity mapping allows stakeholders and organizations to facilitate community engagement, planning, and analysis to address equity challenges; to promote community development; and to affirmatively connect marginalized communities to critical pathways to opportunity, such as successful schools, safe neighborhoods, and sustainable employment. Opportunity mapping creates composite maps based on numerous neighborhood indicators of community opportunity and vitality. The maps allow for an examination of the relationship between marginalized populations and opportunity, placing the equity challenges facing marginalized communities in a geographical perspective, and giving insights into the range of meaningful choices available to an individual or a community. Maps can stimulate dialogue and consensus-building among stakeholders that can help inform the design of equity advocacy efforts, strategic planning, and program evaluation and design. Opportunity mapping engagements create a common space for group learning and a collective narrative about ‘place’.
+       </p>
+       <p>Regional, racial, and social inequities often manifest as spatial inequity; opportunity maps reveal where opportunity is located geographically and demonstrate how different groups of people are concentrated in areas of low or high opportunity. Opportunity mapping has been included in the Fair Housing and Equity Assessment precisely because the U.S. Department of Housing and Urban Development recognizes that opportunity and equity have a geographic dimension, and to truly understand the state of equity in a region, grantees must be able to identify where it exists, and where it does not, in order to effectively design strategies to increase opportunity for all groups. In this story map we will focus our attention on the Educational opportunity.
+       </p>
+       <div class="footnote">
+         <span> Department of Geography, University of Washington.</span>
+         <a target="_blank" href="https://www.uw.edu"> <img src="img/uw_logo.png" width="50px"></a>
+      </div>
+     </div>
+    </section>
+
+    <section id="geonarrative">
+     <div id="storyboard">
+       <div id="map"></div>
+     </div>
+
+     <article class="scene" data-scene="0">
+       <h2>Intoduction to Washington State</h2>
+       <p>Washington, officially the State of Washington, is a state in the Pacific Northwest region of the Western United States. Named for George Washington—the first U.S. president—the state was formed from the western part of the Washington Territory, which was ceded by the British Empire in 1846, in accordance with the Oregon Treaty in the settlement of the Oregon boundary dispute. The state—which is bordered on the west by the Pacific Ocean, Oregon to the south, Idaho to the east, and the Canadian province of British Columbia to the north—was admitted to the Union as the 42nd state in 1889. Olympia is the state capital; the state's largest city is Seattle. Washington is often referred to as Washington state to distinguish it from the nation's capital, Washington, D.C.
+       </p>
+       <p>Washington is one of the wealthiest as well as most socially liberal states in the country. The state consistently ranks among the best for life expectancy and low unemployment. Along with Colorado, Washington was one of the first to legalize medicinal and recreational cannabis, was among the first states to legalize same-sex marriage in 2012, and was one of only four U.S. states to have been providing legal abortions on request before the 1973 Supreme Court decision in Roe v. Wade loosened abortion laws nationwide. Similarly, Washington voters approved a 2008 referendum on legalization of physician-assisted suicide, and Washington is currently one of ten states—along with Washington, D.C.—to have legalized the practice.
+       </p>
+     </article>
+     <article class="scene" data-scene="1">
+       <h2>Intoduction to King County</h2>
+       <p>King County is located in the U.S. state of Washington. The population was 2,269,675 in the 2020 census, making it the most populous county in Washington, and the 12th-most populous in the United States. The county seat is Seattle, also the state's most populous city.
+       </p>
+       <p>King County is one of three Washington counties that are included in the Seattle–Tacoma–Bellevue metropolitan statistical area. (The others are Snohomish County to the north, and Pierce County to the south.) About two-thirds of King County's population lives in Seattle's suburbs.
+       </p>
+     </article>
+     <article class="scene" data-scene="2">
+       <h2>Constructing an Educational Opportunity Index in King County</h2>
+       <p>The indicators that are used to measure educational opportunity include school reading proficiency rates, school math proficiency rates, student poverty rates, teacher qualifications, and graduation rates. These indicators are measured for each census tract in King County.
+       </p>
+       <p>School reading proficiency rates (EDU1) were defined as the scores on the 4th grade reading exam (WASL). The average of the reading scores of the three elementary schools closest to a census tract centroid was assigned for the whole tract.
+       </p>
+       <p>School math proficiency rates (EDU2) were defined as the scores on the 4th grade mathematics exam (WASL). The same method as above was used to assign values to a tract.
+       </p>
+       <p>Student poverty rates (EDU3) were defined as the percentage of elementary school students receiving free or reduced-price lunches. The combined rate of the three elementary schools closest to a census tract centroid was assigned for the whole tract.
+       </p>
+       <p>Teacher qualifications (EDU4) were determined by the percentage of teachers who had obtained a Master’s degree or more. The method used to assign student poverty rates to a tract was also used for this variable, instead using the teacher Master’s achievement rate.
+       </p>
+       <p>Graduation rates (EDU5) were determined by the percentage of students who graduated from high school on time. The method used for student poverty rates and teacher qualifications was used for this variable, as well.
+       </p>
+       <p>An important factor to note about the calculation of the composite index score is that when calculating z-scores of the 5 indicators, the z-score for student poverty was inverted and multiplied by -1, so as to avoid the issue of a high percentage of poverty corresponding with high opportunity.
+       </p>
+     </article>
+     <article class="scene" data-scene="3">
+       <h2>Indicator 1: School reading proficiency rates</h2>
+       <img src="img/EDU1.png"></img>
+       <p>In the map of EDU1, we can see that very low opportunity tracts seem to be clustered together in South Seattle, and continue to exist south of Seattle all the way down to Kent. There is a small cluster of very low opportunity places in Bellevue, as well as a smaller chunk a bit moderate opportunity tracts, but some are interestingly close to high or very high opportunity tracts. This sharp divide is valuable because it can help us note what differences exist between tracts, and essentially observe what is working well next to something that may not be working as well.
+       </p>
+     </article>
+     <article class="scene" data-scene="4">
+       <h2>Indicator 2: School math proficiency rates</h2>
+       <img src="img/EDU2.png"></img>
+       <p>In the map of EDU2, we see very low opportunity places clustered similarly to EDU1. They are mostly located in South Seattle and south towards Kent. Here, the very low opportunity tracts are mostly surrounded by low and moderate opportunity tracts, with some high or very high opportunity tracts existing nearby.
+       </p>
+     </article>
+     <article class="scene" data-scene="5">
+       <h2>Indicator 3: Student poverty rates</h2>
+       <img src="img/EDU3.png"></img>
+       <p>The map of EDU3 looks quite different from those of EDU1 and EDU2. We mostly see very low opportunity places on the Eastside and north of Lake Washington. There are quite a few very low opportunity tracts in the North and Northeastern parts of the county. The very low opportunity tracts for EDU3 seem to be more scattered than the ones we have seen previously, as well. It is interesting to note that the areas labelled as very low opportunity in terms of the first two variables are actually considered to be high opportunity for this variable. I think this illustrates that poverty is experienced across the board, and that an important determinant of poverty is the cost of living in a particular area. Seeing low opportunity in Bellevue, for example, is not extremely surprising, considering how expensive it is to live in that city.
+       </p>
+     </article>
+     <article class="scene" data-scene="6">
+       <h2>Indicator 4: Teacher qualifications</h2>
+       <img src="img/EDU4.png"></img>
+       <p>EDU4 seems to produce an even more scattered map than EDU3. We see very low opportunity tracts in the North and Northeastern parts of the county, as well as in the South. There are quite a few very low opportunity tracts clustered in Bellevue, which was surprising to me. I would have expected an affluent city with a renowned school district to have the ability to hire teachers with greater qualifications. This is a variable that I believe could potentially be explored in depth to understand the exact effects of having a greater percentage of teachers with advanced degrees. Perhaps it is not as great of an indicator of opportunity as other variables, or maybe we are failing to see deep inequity within a tract. It could be possible that some students may not be as affected by low scores on an indicator variable as others, because of external factors that may be supporting their educational experience.
+       </p>
+     </article>
+     <article class="scene" data-scene="7">
+       <h2>Indicator 5: Graduation rates</h2>
+       <img src="img/EDU5.png"></img>
+       <p>The map of EDU5 sees very low opportunity tracts clustered in South Seattle and south towards Renton, and then appearing again in a cluster by Kent and towards Tacoma. There is a small group in the Bellevue/Renton area, as well as a standalone in the north part of the county. This map seems to display similar patterns to the maps of EDU1 and EDU2.
+       </p>
+     </article>
+     <article class="scene" data-scene="8">
+       <h2>Educational opportunity index</h2>
+       <img src="img/Edu_Index.png"></img>
+       <p>The composite education opportunity map illustrates very low opportunity areas as being mostly clustered in South Seattle, as well as all the way south towards Kent. There is also a scattered patch of very low opportunity tracts in Bellevue. Some important things to note is that many of the moderate, low, or very low opportunity areas are areas in which there is a large minority population. The historical effects of segregation and red-lining must not be overlooked when assessing opportunity. We do not live in a vacuum, and therefore cannot just think about what could be causing inequity currently. We must address the root of inequity, and how the very structure of our communities can disadvantage certain groups. Another important fact drawn from these maps is that even supposedly affluent areas can experience very low opportunity, and that in and of itself is an indicator of a potentially enormous discrepancy between the experiences of different children living in the same area.
+       </p>
+     </article>
+     <article class="scene" data-scene="9">
+       <h2>Credits</h2>
+       <p>Author: Jiaxin Feng
+       </p>
+       <p>Date: March 15, 2022
+       </p>
+       <p>This stroymap is supported by cousre instructions and materials from two courses - GEOG 595B: Humanistic GIS and GEOG 461A: Urban Geographic Informaiton Systems, Department of Geography, University of Washington.
+       </p>
+      </article>
+      <article class="scene fullscreen" data-scene="10">
+        <h2>Seattle, City in Washington State</h2>
+      </article>
+    </section>
+
+
+    <section id="footer">
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h6>About</h6>
+              <p class="text-justify"> GeoNarrative, also being referred to as storymap, or map-based storytelling, is an visualization genre that primarily utilizes a series of maps or other types of geovisualizations to narrate a geographical event or phenomenon. In addition to geovisualization, there will be other form of information like scripts, images, or videos. </p>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+              <h6>Categories</h6>
+              <ul class="footer-links">
+                <li><a href="http://hgis.uw.edu/category/c-language/">StoryMap</a></li>
+                <li><a href="http://hgis.uw.edu/category/front-end-development/">Map Design</a></li>
+                <li><a href="http://hgis.uw.edu/category/back-end-development/">Cartography</a></li>
+                <li><a href="http://hgis.uw.edu/category/java-programming-language/">Web Mapping</a></li>
+                <li><a href="http://hgis.uw.edu/category/android/">Advanced Digital Geographies</a></li>
+                <li><a href="http://hgis.uw.edu/category/templates/">Templates</a></li>
+              </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="http://hgis.uw.edu/about/">About Us</a></li>
+                <li><a href="http://hgis.uw.edu/contact/">Contact Us</a></li>
+                <li><a href="http://hgis.uw.edu/contribute-at-scanfcode/">Contribute</a></li>
+                <li><a href="http://hgis.uw.edu/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="http://hgis.uw.edu/sitemap/">Sitemap</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+                <a href="#">Humanistic GIS Lab</a>.
+              </p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons">
+                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+
+    <script>
+      // 1. Select those elments that wil be frequent used.
+      var storyboard = $("#storyboard");
+      var scene = $(".scene");
+      // 2. Declare the maps, thematic layers and the base maps/layers.
+      var map, polygonLayer, pointLayer, lightBasemap, satelliteBasemap;
+
+      // 3. Initialize the geonarrative structure using scrollama
+      var scriptPanel = scrollama();
+
+      // 4. Define Generic window resize listener event
+      function handleResize() {
+        // update the height of each scene elements
+        var sceneH = Math.floor(window.innerHeight * 0.75);
+        scene.css("height", sceneH + "px");
+
+        var storyboardHeight = window.innerHeight;
+        var storyboardMarginTop = (window.innerHeight - storyboardHeight) / 2;
+
+        storyboard
+          .css("height", storyboardHeight + "px")
+          .css("top", storyboardMarginTop + "px");
+
+        // tell scrollama to update new element dimensions
+        scriptPanel.resize();
+      }
+
+      // 5. The function performs when a scene enters the storyboard
+      function handleSceneEnter(response) {
+        var index = response.index;
+
+        if (index === 0) {
+          map.setView(new L.LatLng(47.33, -121.93), 8);
+          map.addLayer(polygonLayer);
+        } else if (index === 1) {
+          map.setView(new L.LatLng(47.33, -121.93), 8);
+          map.addLayer(pointLayer);
+        } else if (index === 2) {
+          //Relocate to Seattle
+          map.setView(new L.LatLng(47.6131229, -122.4121036), 12);
+        //} else if (index === 3) {
+          //Relocate to Portland
+          //map.setView(new L.LatLng(45.5428119, -122.7243662), 12);
+          //map.addLayer(satelliteBasemap);
+        } else if (index === 6) {
+          map.setView(new L.LatLng(47.6131229, -122.4121036), 12);
+          $("#cover").css("visibility", "hidden");
+        }
+      }
+
+      // 6. The function performs when a scene exits the storyboard
+      function handleSceneExit(response) {
+        var index = response.index;
+
+        if (index === 0) {
+          map.removeLayer(polygonLayer);
+        } else if (index === 1) {
+          map.removeLayer(pointLayer);
+        } else if (index === 3) {
+          //exit to Portland
+          map.removeLayer(satelliteBasemap);
+        } else if (index === 6) {
+          $("#cover").css("visibility", "visible");
+        }
+      }
+
+      // 7. the function performs when this html document is ready.
+      $(document).ready(function() {
+
+        // 8. Intialize the layout.
+        // Force a resize on load to ensure proper dimensions are sent to scrollama
+        handleResize();
+        window.scrollTo(0, 0);
+        // Bind the resize function to the window resize event
+        window.addEventListener("resize", handleResize);
+
+        // 9. Use a promise mechnism to asynchrously load the required geojson datasets.
+        Promise.all([
+          $.getJSON("assets/wacountydata.geojson"),
+          $.getJSON("assets/King County_Political Boundary.geojson")
+        ]).then(function(datasets) {
+
+          // 10. After the data are successfully loaded, the then funciton will execute in order to
+          //    a) preprocess the data as map layers
+          //    b) initialize the script panel
+          //    c) initialize the map and layers.
+
+
+          polygonLayer = L.geoJSON(datasets[0]);
+          pointLayer = L.geoJSON(datasets[1]);
+
+          scriptPanel
+            .setup({
+              step: ".scene", // all the scenes.
+              offset: 0.33,   // the location of the enter and exit trigger
+              debug: true  // toggler on or off the debug mode.
+            })
+            .onStepEnter(handleSceneEnter)
+            .onStepExit(handleSceneExit);
+        });
+
+
+        map = L.map('map', {
+          center: [47.33, -121.93],
+          zoom: 7,
+          scrollWheelZoom: false,
+          zoomControl: false,
+          maxZoom: 10,
+          minZoom: 3,
+          detectRetina: true // detect whether the sceen is high resolution or not.
+        });
+
+
+        lightBasemap = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png');
+        satelliteBasemap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+        map.addLayer(lightBasemap);
+
+      });
+    </script>
+
+  </body>
+</html>
